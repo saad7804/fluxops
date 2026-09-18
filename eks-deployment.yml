@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: fluxops
+  namespace: fluxops
 spec:
   replicas: 2
   selector:
@@ -14,7 +15,6 @@ spec:
     spec:
       containers:
         - name: fluxops
-          image: fluxops:v1
-          imagePullPolicy: Never
+          image: 888869353635.dkr.ecr.ap-south-1.amazonaws.com/fluxops:v1
           ports:
             - containerPort: 80
