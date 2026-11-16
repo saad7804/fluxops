@@ -1,6 +1,6 @@
 import { useMemo, useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Search, Filter, Bookmark } from "lucide-react";
+import { Search, Filter } from "lucide-react";
 import SearchBar from "@/components/SearchBar";
 import CommandCard from "@/components/CommandCard";
 import EmptyState from "@/components/EmptyState";

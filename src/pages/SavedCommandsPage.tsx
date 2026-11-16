@@ -10,7 +10,7 @@ import { useSavedCommands, getSavedCommands } from "@/hooks/useSavedCommands";
 type FilterCategory = "All" | CommandCategory;
 
 export default function SavedCommandsPage() {
-  const { savedIds, toggleSave, removeSaved, clearAll } = useSavedCommands();
+  const { savedIds, removeSaved, clearAll } = useSavedCommands();
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState<FilterCategory>("All");
 
