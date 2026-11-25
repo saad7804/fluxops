@@ -636,7 +636,7 @@ Through this project, I gained practical experience with:
 
 ---
 
-## Conclusion
+## Conclusion.
 
 FluxOps combines a practical DevOps learning application with an automated CI/CD deployment workflow.
 
