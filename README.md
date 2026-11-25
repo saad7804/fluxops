@@ -1,404 +1,284 @@
 # FluxOps – Continuous and Automated IT Operations
 
-FluxOps is an educational DevOps command and deployment assistant designed for students and beginners. It helps users learn and use common **Linux, Git, Docker, Jenkins, AWS CLI, and Kubernetes** commands through clear explanations, real examples, troubleshooting solutions, and step-by-step deployment guides.
+**FluxOps** is an educational DevOps command and deployment assistant designed to help students and beginners understand common DevOps tools and workflows.
 
-> **Tagline:** Continuous and Automated IT Operations
+It provides reference commands, explanations, examples, learning paths, and deployment guides for Linux, Git, Docker, Jenkins, AWS CLI, and Kubernetes.
 
-FluxOps is an educational frontend application. It does not execute terminal commands or modify cloud resources. All commands are provided as reference material for users to run manually in their own environments.
+The project also demonstrates a practical CI/CD workflow using **Jenkins, Docker, Docker Hub, and Kubernetes (Minikube)**.
+
+> **Note:** FluxOps is a frontend learning application. It does not execute terminal commands or directly manage cloud infrastructure. All commands are provided as references for users to run manually.
+
+---
+
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+- [Project Structure](#project-structure)
+- [Application Setup](#application-setup)
+- [Docker Containerization](#docker-containerization)
+- [AWS EC2 Deployment](#aws-ec2-deployment)
+- [Kubernetes Deployment](#kubernetes-deployment)
+- [Jenkins CI/CD Pipeline](#jenkins-cicd-pipeline)
+- [GitHub Webhook Configuration](#github-webhook-configuration)
+- [Troubleshooting](#troubleshooting)
+- [Project Results](#project-results)
+- [Learning Outcomes](#learning-outcomes)
+- [Future Enhancements](#future-enhancements)
 
 ---
 
 ## Project Overview
 
-FluxOps combines a beginner-friendly DevOps learning platform with a practical containerization and CI/CD deployment workflow.
+FluxOps combines a DevOps learning platform with a practical deployment workflow.
 
-The application is developed using **React, Vite, TypeScript, and Tailwind CSS**, containerized using **Docker**, published to **Docker Hub**, and deployed to **Kubernetes** through an automated **Jenkins CI/CD pipeline**.
+The frontend provides an organized collection of commonly used DevOps commands and guides. The application is containerized using Docker and deployed to Kubernetes.
 
-### Application Workflow
+Jenkins automates the CI/CD process whenever new code is pushed to the GitHub repository.
 
-```text
-User
- │
- ▼
-FluxOps Web Application
- │
- ├── Commands Library
- ├── Learning Paths
- ├── Docker Guide
- ├── AWS EC2 Guide
- └── Troubleshooting
-```
-
-### CI/CD Workflow
+### Project Workflow
 
 ```text
 Developer
-    │
-    ▼
-GitHub
-    │
-    ▼
+    |
+    v
+GitHub Repository
+    |
+    | Push Event
+    v
 GitHub Webhook
-    │
-    ▼
-Jenkins
-    │
-    ├── Checkout Code
-    │
-    ├── Docker Login
-    │
-    ├── Build Docker Image
-    │
-    ├── Push Docker Image
-    │
-    ├── Deploy to Kubernetes
-    │
-    └── Verify Deployment
-    │
-    ▼
-Docker Hub
-    │
-    ▼
-Kubernetes / Minikube
-    │
-    ▼
+    |
+    v
+Jenkins Pipeline
+    |
+    v
+Docker Login
+    |
+    v
+Build Docker Image
+    |
+    v
+Push Image to Docker Hub
+    |
+    v
+Deploy to Kubernetes
+    |
+    v
+Verify Deployment
+    |
+    v
 FluxOps Application
 ```
 
 ---
 
-# Main Features
+## Features
 
-## DevOps Learning Features
+### Learning Platform
 
-* Search commands by title, command text, explanation, category, or example
-* Filter commands by category
-* Categories include:
+- DevOps command reference for Linux, Git, Docker, Jenkins, AWS CLI, and Kubernetes.
+- Search and filter commands.
+- Copy commands directly.
+- Save frequently used commands.
+- Track learning progress.
+- Structured learning paths.
+- Docker and EC2 deployment guides.
+- Troubleshooting references.
+- Responsive user interface.
+- Dark and light mode.
 
-  * Linux
-  * Git
-  * Docker
-  * Jenkins
-  * AWS CLI
-  * Kubernetes
-* Copy commands to the clipboard
-* Save favourite commands using LocalStorage
-* Track learning progress
-* Structured DevOps learning paths
-* Step-by-step Docker deployment guide
-* Beginner-friendly AWS EC2 setup guide
-* Troubleshooting solutions for common deployment issues
-* Dark mode and light mode
-* Fully responsive design for desktop, tablet, and mobile
+### Application Pages
 
----
-
-# Technology Stack
-
-| Technology   | Purpose                              |
-| ------------ | ------------------------------------ |
-| React        | Frontend UI                          |
-| Vite         | Build tool and development server    |
-| TypeScript   | Type-safe JavaScript                 |
-| Tailwind CSS | UI styling                           |
-| React Router | Client-side routing                  |
-| Lucide React | Icons                                |
-| LocalStorage | Saved commands and learning progress |
-| Nginx        | Production web server                |
-| Docker       | Application containerization         |
-| Jenkins      | CI/CD automation                     |
-| Docker Hub   | Container image registry             |
-| Kubernetes   | Container orchestration              |
-| Minikube     | Kubernetes cluster for deployment    |
-| GitHub       | Source code management               |
-
-### Project does not use
-
-* Supabase
-* Firebase
-* Authentication
-* External databases
-* Serverless functions
-* Paid APIs
-* Environment variables
+| Page | Description |
+|---|---|
+| Home | Project overview and navigation |
+| Commands | DevOps command reference |
+| Docker Guide | Docker concepts and commands |
+| EC2 Guide | AWS EC2 deployment guide |
+| Learning Paths | Structured learning modules |
+| Saved Commands | Bookmarked commands |
+| About | Project information |
 
 ---
 
-# Application Pages
+## Technology Stack
 
-| Page           | Description                                                                |
-| -------------- | -------------------------------------------------------------------------- |
-| Home           | Landing page with search, categories, popular commands, and learning paths |
-| Commands       | Searchable and filterable DevOps commands library                          |
-| Docker Guide   | Step-by-step Docker deployment guide                                       |
-| EC2 Guide      | Beginner-friendly AWS EC2 setup checklist                                  |
-| Learning Paths | Structured learning paths with progress tracking                           |
-| Saved Commands | Saved favourite commands                                                   |
-| About          | Information about FluxOps                                                  |
+| Category | Technologies |
+|---|---|
+| Frontend | React, TypeScript |
+| Build Tool | Vite |
+| Styling | Tailwind CSS |
+| Routing | React Router |
+| Icons | Lucide React |
+| Browser Storage | LocalStorage |
+| Version Control | Git and GitHub |
+| Containerization | Docker |
+| Container Registry | Docker Hub |
+| CI/CD | Jenkins |
+| Cloud Platform | AWS EC2 |
+| Orchestration | Kubernetes |
+| Kubernetes Environment | Minikube |
+| Operating System | Ubuntu Linux |
+
+### Project Does Not Use
+
+- Supabase
+- Firebase
+- External database
+- Backend authentication
+- Paid APIs
+
+The frontend stores saved commands and learning progress locally using LocalStorage.
 
 ---
 
-# Project Structure
+## Project Structure
 
 ```text
 fluxops/
+│
+├── public/
+│
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── data/
+│   ├── hooks/
+│   ├── assets/
+│   ├── App.tsx
+│   └── main.tsx
+│
+├── screenshots/
+│
 ├── Dockerfile
-├── .dockerignore
-├── nginx.conf
 ├── deployment.yml
 ├── service.yml
-├── index.html
+├── Jenkinsfile
 ├── package.json
+├── package-lock.json
 ├── vite.config.ts
-├── tailwind.config.js
-├── postcss.config.js
 ├── tsconfig.json
-├── src/
-│   ├── main.tsx
-│   ├── App.tsx
-│   ├── index.css
-│   ├── components/
-│   │   ├── Navbar.tsx
-│   │   ├── MobileMenu.tsx
-│   │   ├── Footer.tsx
-│   │   ├── Layout.tsx
-│   │   ├── SearchBar.tsx
-│   │   ├── CategoryCard.tsx
-│   │   ├── CommandCard.tsx
-│   │   ├── CopyButton.tsx
-│   │   ├── TerminalBlock.tsx
-│   │   ├── ProgressCard.tsx
-│   │   ├── TroubleshootingAccordion.tsx
-│   │   ├── EmptyState.tsx
-│   │   ├── PageHeading.tsx
-│   │   └── ThemeToggle.tsx
-│   ├── context/
-│   │   └── ThemeContext.tsx
-│   ├── data/
-│   │   ├── commands.ts
-│   │   ├── learningPaths.ts
-│   │   └── troubleshooting.ts
-│   ├── hooks/
-│   │   ├── useSavedCommands.ts
-│   │   ├── useLearningProgress.ts
-│   │   └── useEC2Checklist.ts
-│   └── pages/
-│       ├── HomePage.tsx
-│       ├── CommandsPage.tsx
-│       ├── DockerGuidePage.tsx
-│       ├── EC2GuidePage.tsx
-│       ├── LearningPathsPage.tsx
-│       ├── SavedCommandsPage.tsx
-│       ├── AboutPage.tsx
-│       └── NotFoundPage.tsx
+└── README.md
 ```
 
 ---
 
-# GitHub Repository
+## Application Setup
 
-Source code:
+### Prerequisites
 
-**https://github.com/saad7804/fluxops**
+- Node.js
+- npm
+- Git
 
-Main branch:
-
-```text
-main
-```
-
-Clone the repository:
+### Clone Repository
 
 ```bash
 git clone https://github.com/saad7804/fluxops.git
+```
+
+```bash
 cd fluxops
 ```
 
----
-
-# Local Installation
-
-Install project dependencies:
+### Install Dependencies
 
 ```bash
 npm install
 ```
 
-Start the development server:
+### Start Development Server
 
 ```bash
 npm run dev
 ```
 
-The development server will display the local URL in the terminal.
+Open the application in your browser using the local URL displayed by Vite.
 
----
-
-# Production Build
-
-Create the production build:
+### Build Application
 
 ```bash
 npm run build
 ```
 
-The production files are generated inside:
-
-```text
-dist/
-```
+The production build is generated inside the `dist/` directory.
 
 ---
 
-# Docker
+## Docker Containerization
 
-## Docker Image
+The application is containerized using a multi-stage Docker build.
 
-The application is packaged as:
+### Dockerfile
 
-```text
-saadmomin7804/fluxops:latest
-```
+The Dockerfile uses:
 
-Docker Hub repository:
+- `node:20-alpine` for building the React application.
+- `nginx:alpine` for serving the production build.
+- Port `80` for HTTP traffic.
 
-**https://hub.docker.com/r/saadmomin7804/fluxops**
-
-## Dockerfile
-
-The project uses a multi-stage Docker build.
-
-### Build Stage
-
-The Node.js Alpine image installs dependencies and creates the production build.
-
-### Production Stage
-
-The generated application is served using Nginx Alpine.
-
-```dockerfile
-FROM node:20-alpine AS build
-
-WORKDIR /app
-
-COPY package*.json ./
-
-RUN npm ci
-
-COPY . .
-
-RUN npm run build
-
-FROM nginx:alpine
-
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-COPY --from=build /app/dist /usr/share/nginx/html
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
-```
-
----
-
-# Build and Run Docker Container
-
-Build the image:
+### Build Docker Image
 
 ```bash
-docker build -t fluxops:v1 .
+docker build -t saadmomin7804/fluxops:latest .
 ```
 
-Run the container:
+### Run Container
 
 ```bash
-docker run -d \
-  --name fluxops-container \
-  --restart always \
-  -p 80:80 \
-  fluxops:v1
+docker run -d -p 80:80 --name fluxops saadmomin7804/fluxops:latest
 ```
 
-Check the running container:
+### Verify Container
 
 ```bash
 docker ps
 ```
 
-View container logs:
-
-```bash
-docker logs fluxops-container
-```
-
-Open the application:
+### Access Application
 
 ```text
 http://localhost
 ```
 
+### Docker Hub Repository
+
+[https://hub.docker.com/r/saadmomin7804/fluxops](https://hub.docker.com/r/saadmomin7804/fluxops)
+
 ---
 
-# AWS EC2 Deployment
+## AWS EC2 Deployment
 
-The application can also be deployed manually on an Ubuntu AWS EC2 instance.
+The application can be hosted on an Ubuntu EC2 instance.
 
-## 1. Launch EC2
+### Prerequisites
 
-Launch an Ubuntu EC2 instance and configure the security group to allow:
+- AWS EC2 Ubuntu instance.
+- Security group allowing SSH (22) and HTTP (80).
+- Git installed.
+- Docker installed.
 
-```text
-SSH  - TCP 22
-HTTP - TCP 80
-```
-
-## 2. Connect to EC2
-
-```bash
-ssh -i your-key.pem ubuntu@YOUR_EC2_PUBLIC_IP
-```
-
-## 3. Install Git and Docker
-
-```bash
-sudo apt update
-sudo apt upgrade -y
-
-sudo apt install git docker.io -y
-
-sudo systemctl enable docker
-sudo systemctl start docker
-
-sudo usermod -aG docker ubuntu
-newgrp docker
-```
-
-## 4. Clone FluxOps
+### Clone Repository
 
 ```bash
 git clone https://github.com/saad7804/fluxops.git
-
 cd fluxops
 ```
 
-## 5. Build the Docker Image
+### Build Docker Image
 
 ```bash
-docker build -t fluxops:v1 .
+docker build -t fluxops .
 ```
 
-## 6. Run the Application
+### Run Application
 
 ```bash
-docker run -d \
-  --name fluxops-container \
-  --restart always \
-  -p 80:80 \
-  fluxops:v1
+docker run -d -p 80:80 --name fluxops fluxops
 ```
 
-The application can then be accessed using:
+Access the application using:
 
 ```text
 http://YOUR_EC2_PUBLIC_IP
@@ -406,392 +286,56 @@ http://YOUR_EC2_PUBLIC_IP
 
 ---
 
-# Kubernetes Deployment
+## Kubernetes Deployment
 
-FluxOps can be deployed to Kubernetes using the included Kubernetes manifests.
+The application is deployed to a Kubernetes cluster using Minikube.
 
-The CI/CD deployment uses:
+### Kubernetes Configuration
 
-```text
-Namespace: fluxops
-Deployment: fluxops
-Service: fluxops-service
-Replicas: 2
-Container Port: 80
-Service Type: NodePort
-NodePort: 30007
-```
+| Component | Configuration |
+|---|---|
+| Namespace | fluxops |
+| Deployment | fluxops |
+| Service | fluxops-service |
+| Replicas | 2 |
+| Container Port | 80 |
+| Service Type | NodePort |
+| NodePort | 30007 |
+| Image | saadmomin7804/fluxops:latest |
 
-## Create Namespace
+### Create Namespace
 
 ```bash
 kubectl create namespace fluxops
 ```
 
-## Deploy Application
+### Deploy Application
 
 ```bash
 kubectl apply -f deployment.yml
+```
+
+```bash
 kubectl apply -f service.yml
 ```
 
-## Verify Deployment
+### Verify Deployment
+
+```bash
+kubectl get pods -n fluxops
+```
 
 ```bash
 kubectl get deployments -n fluxops
-kubectl get pods -n fluxops
-kubectl get services -n fluxops
-kubectl get all -n fluxops
 ```
-
----
-
-# Kubernetes Manifests
-
-## Deployment
-
-The FluxOps Deployment runs two application replicas.
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: fluxops
-  namespace: fluxops
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: fluxops
-  template:
-    metadata:
-      labels:
-        app: fluxops
-    spec:
-      containers:
-        - name: fluxops
-          image: saadmomin7804/fluxops:latest
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 80
-```
-
-## Service
-
-The application is exposed through a Kubernetes NodePort service.
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: fluxops-service
-  namespace: fluxops
-spec:
-  type: NodePort
-  selector:
-    app: fluxops
-  ports:
-    - port: 80
-      targetPort: 80
-      nodePort: 30007
-```
-
----
-
-# CI/CD Pipeline with Jenkins
-
-The project implements a complete Jenkins CI/CD pipeline for automatically building, publishing, deploying, and verifying the FluxOps application.
-
-## CI/CD Flow
-
-```text
-GitHub Push
-     │
-     ▼
-GitHub Webhook
-     │
-     ▼
-Jenkins
-     │
-     ├── Checkout Code
-     │
-     ├── Docker Login
-     │
-     ├── Build Docker Image
-     │
-     ├── Push Docker Image
-     │
-     ├── Deploy to Kubernetes
-     │
-     └── Verify Deployment
-     │
-     ▼
-Docker Hub
-     │
-     ▼
-Kubernetes / Minikube
-     │
-     ▼
-FluxOps Application
-```
-
----
-
-# Jenkins Pipeline Stages
-
-## 1. Checkout Code
-
-Jenkins checks out the `main` branch from:
-
-```text
-https://github.com/saad7804/fluxops.git
-```
-
-## 2. Docker Login
-
-Jenkins authenticates with Docker Hub using the configured credential:
-
-```text
-docker_creds
-```
-
-## 3. Build Docker Image
-
-Jenkins builds:
-
-```text
-saadmomin7804/fluxops:latest
-```
-
-using the project Dockerfile.
-
-## 4. Push Docker Image
-
-The Docker image is pushed to Docker Hub.
-
-## 5. Deploy to Kubernetes
-
-Jenkins uses the Kubernetes kubeconfig credential:
-
-```text
-kubeconfig
-```
-
-The pipeline:
-
-* Creates the `fluxops` namespace if required
-* Applies `deployment.yml`
-* Applies `service.yml`
-* Restarts the FluxOps deployment
-* Waits for the rollout to complete
-
-## 6. Verify Deployment
-
-Jenkins verifies:
 
 ```bash
-kubectl get pods -n fluxops
-kubectl get svc -n fluxops
-kubectl get deployment -n fluxops
-kubectl get all -n fluxops
+kubectl get services -n fluxops
 ```
 
----
+### Access Application
 
-# Jenkins Pipeline
-
-The pipeline used for the project:
-
-```groovy
-pipeline {
-    agent any
-
-    environment {
-        IMAGE = "saadmomin7804/fluxops"
-        TAG = "latest"
-    }
-
-    stages {
-
-        stage('Checkout Code') {
-            steps {
-                git branch: 'main',
-                    url: 'https://github.com/saad7804/fluxops.git'
-            }
-        }
-
-        stage('Docker Login') {
-            steps {
-                withCredentials([
-                    usernamePassword(
-                        credentialsId: 'docker_creds',
-                        usernameVariable: 'DOCKER_USER',
-                        passwordVariable: 'DOCKER_PASS'
-                    )
-                ]) {
-                    sh '''
-                        echo "$DOCKER_PASS" | docker login \
-                        -u "$DOCKER_USER" \
-                        --password-stdin
-                    '''
-                }
-            }
-        }
-
-        stage('Build Docker Image') {
-            steps {
-                sh '''
-                    docker build -t ${IMAGE}:${TAG} .
-                '''
-            }
-        }
-
-        stage('Push Docker Image') {
-            steps {
-                sh '''
-                    docker push ${IMAGE}:${TAG}
-                '''
-            }
-        }
-
-        stage('Deploy to Kubernetes') {
-            steps {
-                withCredentials([
-                    file(
-                        credentialsId: 'kubeconfig',
-                        variable: 'KUBECONFIG_FILE'
-                    )
-                ]) {
-                    sh '''
-                        export KUBECONFIG="$KUBECONFIG_FILE"
-
-                        echo "===== Creating Namespace ====="
-                        kubectl create namespace fluxops \
-                        --dry-run=client -o yaml | kubectl apply -f -
-
-                        echo "===== Deploying Application ====="
-                        kubectl apply -f deployment.yml
-                        kubectl apply -f service.yml
-
-                        echo "===== Restarting Deployment ====="
-                        kubectl rollout restart deployment/fluxops -n fluxops
-
-                        echo "===== Waiting for Deployment ====="
-                        kubectl rollout status deployment/fluxops -n fluxops
-                    '''
-                }
-            }
-        }
-
-        stage('Verify Deployment') {
-            steps {
-                withCredentials([
-                    file(
-                        credentialsId: 'kubeconfig',
-                        variable: 'KUBECONFIG_FILE'
-                    )
-                ]) {
-                    sh '''
-                        export KUBECONFIG="$KUBECONFIG_FILE"
-
-                        echo "===== PODS ====="
-                        kubectl get pods -n fluxops -o wide
-
-                        echo "===== SERVICES ====="
-                        kubectl get svc -n fluxops
-
-                        echo "===== DEPLOYMENT ====="
-                        kubectl get deployment -n fluxops
-
-                        echo "===== ALL RESOURCES ====="
-                        kubectl get all -n fluxops
-                    '''
-                }
-            }
-        }
-    }
-
-    post {
-        always {
-            sh 'docker logout || true'
-        }
-
-        success {
-            echo 'FluxOps CI/CD pipeline completed successfully!'
-        }
-
-        failure {
-            echo 'FluxOps CI/CD pipeline failed. Check the Console Output.'
-        }
-    }
-}
-```
-
----
-
-# Jenkins Credentials
-
-The Jenkins pipeline uses two credentials.
-
-## Docker Hub Credential
-
-Credential ID:
-
-```text
-docker_creds
-```
-
-This credential contains the Docker Hub username and Personal Access Token.
-
-## Kubernetes Credential
-
-Credential ID:
-
-```text
-kubeconfig
-```
-
-The Kubernetes configuration is stored in Jenkins as a Secret File credential.
-
-This allows Jenkins to authenticate with the Kubernetes cluster during deployment.
-
----
-
-# GitHub Webhook
-
-A GitHub webhook is implemented to connect the GitHub repository with Jenkins.
-
-Webhook endpoint:
-
-```text
-http://13.235.95.244:8080/github-webhook/
-```
-
-The webhook is configured for **Push events**.
-
-When changes are pushed to the GitHub repository, the webhook triggers the Jenkins CI/CD workflow.
-
-```text
-Git Push
-   ↓
-GitHub Webhook
-   ↓
-Jenkins
-   ↓
-Build
-   ↓
-Docker Hub
-   ↓
-Kubernetes
-```
-
----
-
-# Accessing the Kubernetes Application
-
-The FluxOps Kubernetes Service is exposed using NodePort `30007`.
-
-For the demonstrated EC2 Minikube deployment, the application can also be accessed using Kubernetes port forwarding:
+To access the application through port forwarding:
 
 ```bash
 kubectl port-forward \
@@ -801,329 +345,303 @@ kubectl port-forward \
   -n fluxops
 ```
 
-The application can then be accessed through:
+Open:
 
 ```text
 http://YOUR_EC2_PUBLIC_IP:9090
 ```
 
+Ensure the EC2 security group allows inbound traffic on port `9090`.
+
 ---
 
-# Troubleshooting
+## Jenkins CI/CD Pipeline
 
-## Docker Permission Denied
+Jenkins automates the build, containerization, image publishing, and Kubernetes deployment process.
 
-```bash
-sudo usermod -aG docker $USER
-newgrp docker
-```
+The pipeline is configured using a `Jenkinsfile` stored in the GitHub repository.
 
-## Port 80 Already in Use
+### Jenkins Pipeline Job
 
-```bash
-sudo lsof -i :80
-```
+**Job Name:** `fluxops-pipeline`
 
-## Container Name Already Exists
+### Pipeline Stages
 
-```bash
-docker rm -f fluxops-container
-```
+| Stage | Description |
+|---|---|
+| Checkout Code | Retrieves the latest source code from GitHub |
+| Docker Login | Authenticates with Docker Hub |
+| Build Docker Image | Builds the application Docker image |
+| Push Docker Image | Pushes the image to Docker Hub |
+| Deploy to Kubernetes | Applies Kubernetes deployment and service configurations |
+| Verify Deployment | Checks pods, services, and deployment status |
 
-## No Space Left on Device
+### Pipeline Process
 
-Check Docker disk usage:
+**1. Code Checkout**
 
-```bash
-docker system df
-```
+Jenkins retrieves the latest code from the GitHub repository.
 
-Clean unused Docker resources:
+**2. Docker Authentication**
 
-```bash
-docker system prune -a
-```
+Jenkins authenticates with Docker Hub using stored credentials.
 
-## React Router Returns 404 After Refresh
+**3. Docker Image Build**
 
-Make sure `nginx.conf` contains:
+The application is packaged into a Docker image.
 
-```nginx
-try_files $uri $uri/ /index.html;
-```
+**4. Push to Docker Hub**
 
-## EC2 Public IP Not Opening
+The newly built image is pushed to the Docker Hub repository.
 
-Check:
+**5. Kubernetes Deployment**
 
-```bash
-docker ps
-```
+Jenkins applies the Kubernetes deployment and service manifests.
 
-Make sure the FluxOps container is running.
+It also restarts the deployment to ensure the updated image is used.
 
-Also verify that port `80` is allowed in the EC2 security group.
+**6. Deployment Verification**
 
-If UFW is enabled:
+Jenkins checks the rollout status and verifies the Kubernetes resources.
 
-```bash
-sudo ufw allow 80/tcp
-```
+### Jenkins Credentials
 
-## Kubernetes Pods Not Running
+The following credentials are configured in Jenkins:
 
-Check:
+| Credential ID | Type | Purpose |
+|---|---|---|
+| `docker_creds` | Username with password | Docker Hub authentication |
+| `kubeconfig` | Secret file | Kubernetes cluster access |
 
-```bash
-kubectl get pods -n fluxops
-```
+Sensitive credentials are stored in Jenkins and are not hardcoded in the repository.
 
-Inspect a pod:
+### Pipeline Commands
+
+The pipeline uses commands such as:
 
 ```bash
-kubectl describe pod POD_NAME -n fluxops
+kubectl create namespace fluxops --dry-run=client -o yaml | kubectl apply -f -
 ```
 
-Check deployment status:
+```bash
+kubectl apply -f deployment.yml
+```
+
+```bash
+kubectl apply -f service.yml
+```
+
+```bash
+kubectl rollout restart deployment/fluxops -n fluxops
+```
 
 ```bash
 kubectl rollout status deployment/fluxops -n fluxops
 ```
 
----
+### Deployment Verification
 
-# Project Screenshots
+```bash
+kubectl get pods -n fluxops
+```
 
-## Application
+```bash
+kubectl get services -n fluxops
+```
 
-### Home Page
+```bash
+kubectl get deployments -n fluxops
+```
 
-![Home Page](screenshots/home.png)
-
-### Commands Library
-
-![Commands Library](screenshots/commands.png)
-
-### Docker Guide
-
-![Docker Guide](screenshots/docker-guide.png)
-
-### EC2 Guide
-
-![EC2 Guide](screenshots/ec2-guide.png)
-
-### Learning Paths
-
-![Learning Paths](screenshots/learning-paths.png)
-
-### Saved Commands
-
-![Saved Commands](screenshots/saved-commands.png)
-
-### About Page
-
-![About Page](screenshots/about.png)
-
-### Dark Mode
-
-![Dark Mode](screenshots/dark-mode.png)
-
-### Light Mode
-
-![Light Mode](screenshots/light-mode.png)
-
----
-
-# DevOps and Infrastructure Screenshots
-
-### 01. Docker Installation
-
-![Docker Installation](screenshots/01-docker-installation.png.png)
-
-### 02. FluxOps Repository Cloned
-
-![FluxOps Cloned](screenshots/02-fluxops-cloned.png.png)
-
-### 03. Docker Image
-
-![Docker Image](screenshots/03-docker-image.png.png)
-
-### 04. Minikube Cluster
-
-![Minikube Cluster](screenshots/04-minikube-cluster.png.png)
-
-### 05. Local Kubernetes Deployment
-
-![Local Kubernetes Deployment](screenshots/05-local-kubernetes-deployment.png.png)
-
-### 06. Local Kubernetes Application
-
-![Local Kubernetes Application](screenshots/06-local-kubernetes-app.png.png)
-
-### 07. Kubernetes Verification
-
-![Kubernetes Verification](screenshots/07-kubernetes-verification.png.png)
-
-### 08. Amazon ECR Image
-
-![ECR Image](screenshots/08-ecr-image.png.png)
-
-### 09. Amazon EKS Cluster
-
-![EKS Cluster](screenshots/09-eks-cluster.png.png)
-
-### 10. EKS Fargate Profile
-
-![Fargate Profile](screenshots/10-fargate-profile.png.png)
-
-### 11. EKS Application
-
-![EKS Application](screenshots/11-eks-application.png.png)
-
-### 12. EKS Pods Running
-
-![EKS Pods](screenshots/12-eks-pods-running.png.png)
-
-### 13. EKS Verification
-
-![EKS Verification](screenshots/13-eks-verification.png.png)
-
----
-
-# CI/CD Screenshots
-
-### 14. Jenkins Pipeline
-
-![Jenkins Pipeline](screenshots/14-jenkins-pipeline.png)
-
-### 15. Jenkins Successful Build
-
-![Jenkins Success](screenshots/15-jenkins-success.png)
-
-### 16. Docker Hub Image
-
-![Docker Hub Image](screenshots/16-dockerhub-image.png)
-
-### 17. Kubernetes Pods
-
-![CI/CD Kubernetes Pods](screenshots/17-cicd-kubernetes-pods.png)
-
-### 18. FluxOps Application After CI/CD Deployment
-
-![FluxOps CI/CD Application](screenshots/18-cicd-fluxops-app.png)
-
-### 19. GitHub Webhook
-
-![GitHub Webhook](screenshots/19-github-webhook.png)
-
----
-
-# Project Results
-
-The completed project demonstrates:
-
-* Source code management using Git and GitHub
-* GitHub webhook integration with Jenkins
-* Docker-based application containerization
-* Docker image publishing to Docker Hub
-* Jenkins-based CI/CD automation
-* Kubernetes deployment using Minikube
-* Kubernetes namespace management
-* Kubernetes Deployments
-* Kubernetes Services
-* Two application replicas
-* Automated deployment verification
-* Application access after successful deployment
-
-The complete workflow is:
-
-```text
-GitHub
-   ↓
-GitHub Webhook
-   ↓
-Jenkins
-   ↓
-Checkout Code
-   ↓
-Docker Login
-   ↓
-Docker Build
-   ↓
-Docker Push
-   ↓
-Kubernetes Deployment
-   ↓
-Deployment Verification
-   ↓
-FluxOps Application
+```bash
+kubectl get all -n fluxops
 ```
 
 ---
 
-# Learning Outcomes
+## GitHub Webhook Configuration
 
-Through this project, the following practical DevOps concepts were implemented:
+A GitHub webhook is configured to trigger the Jenkins pipeline automatically when code is pushed to the repository.
 
-* Git and GitHub
-* Linux and Ubuntu administration
-* Docker
-* Docker Hub
-* Jenkins
-* Jenkins Credentials
-* CI/CD Pipelines
-* GitHub Webhooks
-* Kubernetes
-* Minikube
-* Kubernetes Deployments
-* Kubernetes Services
-* Kubernetes Namespaces
-* Containerized Application Deployment
-* AWS EC2
-* Amazon ECR
-* Amazon EKS
-* AWS Fargate
+### Configuration
 
----
+1. Open the GitHub repository.
+2. Navigate to **Settings → Webhooks**.
+3. Select **Add webhook**.
+4. Enter the Jenkins webhook endpoint:
 
-# Future Enhancements
+```text
+http://YOUR_JENKINS_PUBLIC_IP:8080/github-webhook/
+```
 
-Possible future improvements include:
+5. Select `application/json` as the content type.
+6. Enable the **Just the push event** option.
+7. Save the webhook.
 
-* Use versioned Docker image tags instead of only `latest`
-* Add automated application tests before Docker image publishing
-* Add code-quality and security scanning
-* Add Prometheus and Grafana monitoring
-* Add Kubernetes Ingress
-* Add HTTPS/TLS
-* Deploy the CI/CD workflow to Amazon EKS
-* Add automated rollback for failed deployments
-* Add additional DevOps learning modules
-* Add more troubleshooting scenarios
+Jenkins must be accessible from GitHub for webhook delivery to work.
 
----
+### Automated Workflow
 
-# Conclusion
-
-FluxOps demonstrates how a beginner-friendly DevOps learning application can be combined with a practical CI/CD deployment workflow.
-
-The project progresses from application development and version control to containerization, Docker image publishing, GitHub webhook integration, Jenkins automation, Kubernetes deployment, and application verification.
-
-The implementation provides a practical demonstration of how commonly used DevOps tools can work together to create a repeatable and automated application delivery workflow.
+```text
+Code Change
+    |
+    v
+Git Push
+    |
+    v
+GitHub Webhook
+    |
+    v
+Jenkins Triggered
+    |
+    v
+Docker Image Built
+    |
+    v
+Image Pushed to Docker Hub
+    |
+    v
+Kubernetes Deployment Updated
+    |
+    v
+Deployment Verified
+```
 
 ---
 
-# Author
+## Troubleshooting
+
+### Docker Permission Denied
+
+```bash
+sudo usermod -aG docker $USER
+```
+
+Log out and log in again for the group change to take effect.
+
+### Port Already in Use
+
+Check which process is using port 80:
+
+```bash
+sudo lsof -i :80
+```
+
+### Container Name Already Exists
+
+```bash
+docker rm -f fluxops
+```
+
+### Check Docker Containers
+
+```bash
+docker ps -a
+```
+
+### Kubernetes Pods Not Running
+
+```bash
+kubectl get pods -n fluxops
+```
+
+```bash
+kubectl describe pods -n fluxops
+```
+
+### Check Kubernetes Services
+
+```bash
+kubectl get svc -n fluxops
+```
+
+### Check Deployment Events
+
+```bash
+kubectl describe deployment fluxops -n fluxops
+```
+
+### Check Application Logs
+
+```bash
+kubectl logs -l app=fluxops -n fluxops
+```
+
+### Check Disk Usage
+
+```bash
+docker system df
+```
+
+Be careful when using `docker system prune -a`, as it can remove unused images and build cache.
+
+---
+
+## Project Results
+
+The project demonstrates the following:
+
+- Developed a React-based DevOps learning application.
+- Managed source code using Git and GitHub.
+- Containerized the application using Docker.
+- Published Docker images to Docker Hub.
+- Hosted the application on AWS EC2.
+- Configured Jenkins for automated CI/CD.
+- Integrated GitHub webhooks with Jenkins.
+- Deployed the application to Kubernetes using Minikube.
+- Configured a Kubernetes namespace, deployment, and service.
+- Ran the application with two replicas.
+- Verified deployment and rollout status using `kubectl`.
+
+---
+
+## Learning Outcomes
+
+Through this project, I gained practical experience with:
+
+- Git and GitHub version control.
+- Linux and Ubuntu administration.
+- Docker image creation and container management.
+- Docker Hub image publishing.
+- Jenkins pipeline configuration.
+- Jenkins credentials management.
+- CI/CD automation.
+- GitHub webhook integration.
+- Kubernetes deployments and services.
+- Minikube cluster management.
+- AWS EC2 deployment.
+- Troubleshooting container and Kubernetes workloads.
+
+---
+
+## Future Enhancements
+
+- Implement version-based Docker image tagging.
+- Add automated application testing.
+- Integrate code quality and security scanning.
+- Add application monitoring and logging.
+- Configure Kubernetes Ingress.
+- Enable HTTPS.
+- Implement automated rollback.
+- Expand the DevOps learning modules.
+
+---
+
+## Author
 
 **Saad Momin**
 
-GitHub:
-https://github.com/saad7804
-
-LinkedIn:
-https://linkedin.com/in/saadmomin
+- GitHub: [github.com/saad7804](https://github.com/saad7804)
+- LinkedIn: [linkedin.com/in/saadmomin](https://linkedin.com/in/saadmomin)
 
 ---
 
-© FluxOps. Built for learning DevOps.
-Testing GitHub webhook automation
+## Conclusion
+
+FluxOps combines a practical DevOps learning application with an automated CI/CD deployment workflow.
+
+The project demonstrates how GitHub, Jenkins, Docker, Docker Hub, AWS EC2, and Kubernetes can work together to automate application delivery.
+
+It helped me gain hands-on experience with containerization, CI/CD automation, Kubernetes deployment, and infrastructure troubleshooting.
+
+**Project Repository:** [https://github.com/saad7804/fluxops](https://github.com/saad7804/fluxops)
