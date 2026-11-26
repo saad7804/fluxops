@@ -1,5 +1,5 @@
 # FluxOps – Continuous and Automated IT Operations
-
+.
 **FluxOps** is an educational DevOps command and deployment assistant designed to help students and beginners understand common DevOps tools and workflows.
 
 It provides reference commands, explanations, examples, learning paths, and deployment guides for Linux, Git, Docker, Jenkins, AWS CLI, and Kubernetes.
